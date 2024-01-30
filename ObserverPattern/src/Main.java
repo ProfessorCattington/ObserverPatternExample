@@ -13,6 +13,7 @@ public class Main {
         newsSource.Subscribe(new SportsFan());
         newsSource.Subscribe(new DoomScroller());
 
+        //headlines
         newsSource.BreakingNews("weather", "Heavy rains all week.");
         newsSource.BreakingNews("business", "New factory to open.");
         newsSource.BreakingNews("sports", "Our team wins!");
