@@ -14,6 +14,10 @@ public class NewsSource<T extends SubscriberInterface> {
         subscribers.add(subscriber);
     }
 
+    public void Unsubscribe(T subscriber) {
+        subscribers.remove(subscriber);
+    }
+
     //call this when you want your subscribers to be notified about a new topic and headline
     public void NotifySubscribers(String topic, String headline) {
         for (T subscriber : subscribers) {
