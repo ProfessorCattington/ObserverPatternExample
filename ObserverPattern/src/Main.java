@@ -1,7 +1,4 @@
-import ObserverPackage.AveragePerson;
-import ObserverPackage.DoomScroller;
-import ObserverPackage.NewsSource;
-import ObserverPackage.SportsFan;
+import ObserverPackage.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,7 +7,8 @@ public class Main {
 
         //subscribers
         newsSource.Subscribe(new AveragePerson());
-        newsSource.Subscribe(new SportsFan());
+        SubscriberInterface sportsFan = new SportsFan(); //this sub will be removed so we are keeping a handle on it
+        newsSource.Subscribe(sportsFan);
         newsSource.Subscribe(new DoomScroller());
 
         //headlines
@@ -18,5 +16,15 @@ public class Main {
         newsSource.BreakingNews("business", "New factory to open.");
         newsSource.BreakingNews("sports", "Our team wins!");
         newsSource.BreakingNews("politics", "Mayor ignores calls to resign.");
+
+        //unsub the sports fan (they aren't interested in the news anymore)
+        System.out.println(">>>>Sports fan ends their news subscription...");
+        newsSource.Unsubscribe(sportsFan);
+
+        //more headlines
+        newsSource.BreakingNews("weather", "It's raining footballs!");
+        newsSource.BreakingNews("business", "Football stocks drop!");
+        newsSource.BreakingNews("sports", "All-star breaks ankle!");
+        newsSource.BreakingNews("politics", "Mayor to play for local team.");
     }
 }
